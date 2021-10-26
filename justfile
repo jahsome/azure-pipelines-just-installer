@@ -12,15 +12,15 @@ build:
     npx tsc
     version=$(cat package.json | jq -r '.version | split(".") | { Major: .[0], Minor: .[1], Patch: .[2]}')
     cat src/resources/task.json | jq -r --argjson version "$version" ' .version |= $version ' > dist/task.json
-    cat src/resources/vss-extension.json | jq -r --argjson version "$version" ' .version |= $version ' > dist/vss-extension.json
 
 version version="patch":
     npm version {{ version }}
+    cat src/resources/vss-extension.json | jq -r --argjson version "$version" ' .version |= $version ' > vss-extension.json
 
 package:
     npx tfx extension create --output-path dist/ext --manifest-globs dist/vss-extension.json
 
-publish version="minor": (version version)
+publish:
     npx tfx extension publish \
         --manifest-globs dist/vss-extension.json \
         --auth-type pat \
