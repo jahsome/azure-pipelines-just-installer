@@ -15,7 +15,7 @@ build:
 
 version version="patch":
     npm version {{ version }}
-    cat src/resources/vss-extension.json | jq -r --argjson version "$version" ' .version |= $version ' > vss-extension.json
+    cat vss-extension.json | jq -r --argjson version "$version" ' .version |= $version ' > vss-extension.json
 
 package:
     npx tfx extension create --output-path dist/ext --manifest-globs dist/vss-extension.json
