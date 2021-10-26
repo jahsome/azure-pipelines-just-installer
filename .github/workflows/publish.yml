@@ -4,6 +4,7 @@ on:
 
 jobs:
   publish:
+    environment: production
     runs-on: ubuntu-latest
     name: Publish
     steps:
@@ -19,4 +20,4 @@ jobs:
     - run: just release ${{ steps.tag.outputs.source_tag }}
       name: Publish extension ver. ${{ steps.tag.outputs.source_tag }}
       env:
-        AZURE_DEVOPS_PAT: ${{ secrets.production.AZURE_DEVOPS_PAT }}
+        AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
