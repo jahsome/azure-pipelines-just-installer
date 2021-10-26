@@ -18,17 +18,16 @@ version version="patch":
     npm version {{ version }}
 
 package:
-    npx tfx extension --manifest-globs dist/vss-extension.json create
+    npx tfx extension create --output-path dist/ext --manifest-globs dist/vss-extension.json
 
 publish version="minor": (version version)
-    npx tfx extension \
+    npx tfx extension publish \
         --manifest-globs dist/vss-extension.json \
         --auth-type pat \
         --no-prompt -t $AZURE_DEVOPS_PAT \
-        -u https://marketplace.visualstudio.com \
-        publish
+        -u https://marketplace.visualstudio.com
 
-release version="minor": clean (version version) install build package
+release version="minor": clean (version version) install build package publish
 
 run:
     node dist/index.js
