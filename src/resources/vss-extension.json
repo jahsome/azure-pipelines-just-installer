@@ -1,0 +1,29 @@
+{
+  "manifestVersion": 1,
+  "id": "just-installer",
+  "name": "Just installer",
+  "version": "0.0.0",
+  "publisher": "jahsome",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Installer for the Just task runner.",
+  "categories": ["Azure Pipelines"],
+  "files": [
+    {
+      "path": "dist"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "just-installer",
+      "type": "ms.vss-distributed-task.task",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "properties": {
+        "name": "dist"
+      }
+    }
+  ]
+}

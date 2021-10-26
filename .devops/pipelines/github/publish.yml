@@ -1,0 +1,26 @@
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish
+    steps:
+    - run: echo ::set-output name=source_tag::${GITHUB_REF#refs/tags/}
+      name: Get the tag
+      id: tag
+    - uses: actions/checkout@v2
+      name: Check out repository
+    - uses: actions/setup-node@v1
+      name: Set up Node.js
+    - uses: extractions/setup-just@v1
+      name: Set up Just
+    - run: |
+        just login
+        just release $source_tag
+        just logout
+      name: Publish extension ver. $source_tag
+      env:
+        azure_devops_pat: ${{ secrets.azure_devops_pat }}
+        source_tag: ${{ steps.tag.outputs.source_tag }}

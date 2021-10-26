@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "cff4838f-8fe6-4399-90a7-a6380fbc3c36",
+  "name": "JustToolInstaller",
+  "friendlyName": "Just Installer",
+  "description": "Just task runner installer",
+  "helpMarkDown": "",
+  "category": "Utility",
+  "author": "Jake Harris",
+  "version": {
+    "Major": 0,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "instanceNameFormat": "Installing just $(version)",
+  "inputs": [
+    {
+      "name": "version",
+      "type": "string",
+      "label": "Version (optional)",
+      "required": false,
+      "helpMarkDown": "The version of Just to install, e.g., 0.10.1 - omit a version to install the latest."
+    }
+  ],
+  "execution": {
+    "Node10": {
+      "target": "lib/index.js"
+    }
+  }
+}
