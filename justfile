@@ -1,7 +1,7 @@
 set positional-arguments
 
 install:
-    npm install
+    npm ci
 
 clean: 
     rm -rf dist
