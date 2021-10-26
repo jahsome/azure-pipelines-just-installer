@@ -27,7 +27,7 @@ publish:
         --manifest-globs vss-extension.json \
         --auth-type pat \
         --no-prompt \
-        -t "$azure_devops_pat" \
+        -t $azure_devops_pat \
         -u https://marketplace.visualstudio.com
 
 release version="minor": clean (version version) install build package publish

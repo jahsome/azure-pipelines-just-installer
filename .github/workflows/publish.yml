@@ -20,4 +20,3 @@ jobs:
       name: Publish extension ver. ${{ steps.tag.outputs.source_tag }}
       env:
         azure_devops_pat: ${{ secrets.azure_devops_pat }}
-        source_tag: ${{ steps.tag.outputs.source_tag }}
