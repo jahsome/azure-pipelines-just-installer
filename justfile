@@ -14,15 +14,17 @@ build:
     cat src/resources/task.json | jq -r --argjson version "$version" ' .version |= $version ' > dist/task.json
 
 version version="patch":
-    npm version {{ version }}
-    cat vss-extension.json | jq -r --argjson version "$version" ' .version |= $version ' > vss-extension.json
+    #!/bin/bash
+    npm version -f {{ version }}
+    parsed=$(cat package.json | jq -r '.version')
+    cat vss-extension.json | jq -r --arg version "$parsed" ' .version |= $version ' > vss-extension.json
 
 package:
-    npx tfx extension create --output-path dist/ext --manifest-globs dist/vss-extension.json
+    npx tfx extension create --output-path dist/ext --manifest-globs vss-extension.json
 
 publish:
     npx tfx extension publish \
-        --manifest-globs dist/vss-extension.json \
+        --manifest-globs vss-extension.json \
         --auth-type pat \
         --no-prompt -t $AZURE_DEVOPS_PAT \
         -u https://marketplace.visualstudio.com
