@@ -11,13 +11,13 @@ build:
     #!/bin/bash
     npx tsc
     version=$(cat package.json | jq -r '.version | split(".") | { Major: .[0], Minor: .[1], Patch: .[2]}')
-    cat src/resources/task.json | jq -r --argjson version "$version" ' .version |= $version ' > dist/task.json
+    cat <<< $(jq --argjson version "$version" ' .version |= $version ' src/resources/task.json) > dist/task.json
 
 version version="patch":
     #!/bin/bash
     npm version -f {{ version }}
     parsed=$(cat package.json | jq -r '.version')
-    cat vss-extension.json | jq -r --arg version "$parsed" ' .version |= $version ' > vss-extension.json
+    cat <<< $(jq --arg version "$parsed" ' .version = $version ' vss-extension.json) > vss-extension.json
 
 package:
     npx tfx extension create --output-path dist/ext --manifest-globs vss-extension.json
@@ -26,7 +26,7 @@ publish:
     npx tfx extension publish \
         --manifest-globs vss-extension.json \
         --auth-type pat \
-        --no-prompt -t $AZURE_DEVOPS_PAT \
+        --no-prompt -t env_var('AZURE_DEVOPS_PAT') \
         -u https://marketplace.visualstudio.com
 
 release version="minor": clean (version version) install build package publish
