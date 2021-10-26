@@ -1,11 +1,11 @@
 {
   "name": "@jahsome/azure-pipelines-just-installer",
   "description": "Tool installer for Azure Pipelines for the Just command runner",
-  "main": "index.js",
+  "main": "dist/lib/index.js",
   "scripts": {
     "test": "jest"
   },
-  "author": "",
+  "author": "Jake Harris <jake@scuttlebyte.com>",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.23.0",
