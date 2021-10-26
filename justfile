@@ -27,8 +27,8 @@ publish:
         --manifest-globs vss-extension.json \
         --auth-type pat \
         --no-prompt \
-        -t "{{ env_var('AZURE_DEVOPS_PAT') }}" \
-        -u "https://marketplace.visualstudio.com"
+        -t {{ env_var('AZURE_DEVOPS_PAT') }} \
+        -u https://marketplace.visualstudio.com
 
 release version="minor": clean (version version) install build package publish
 
