@@ -32,5 +32,8 @@ publish:
 
 release version="minor": clean (version version) install build package publish
 
+tag version:
+    gh release create {{ version }} -R jahsome/azure-pipelines-just-installer -t {{ version }} -n ''
+
 run:
     node dist/lib
