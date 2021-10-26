@@ -1,6 +1,5 @@
 {
   "name": "@jahsome/azure-pipelines-just-installer",
-  "version": "0.9.0",
   "description": "Tool installer for Azure Pipelines for the Just command runner",
   "main": "index.js",
   "scripts": {
