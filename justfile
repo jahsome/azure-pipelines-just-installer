@@ -28,7 +28,7 @@ publish version="minor": (version version)
         -u https://marketplace.visualstudio.com \
         publish
 
-release version="minor": install clean build package (version version)
+release version="minor": install clean build (version version) package
 
 run:
     node dist/index.js
