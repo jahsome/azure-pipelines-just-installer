@@ -15,7 +15,7 @@ build:
 
 version version="patch":
     #!/bin/bash
-    npm version -f {{ version }}
+    npm --no-git-tag-version version {{ version }}
     parsed=$(cat package.json | jq -r '.version')
     cat <<< $(jq --arg version "$parsed" ' .version = $version ' vss-extension.json) > vss-extension.json
 
@@ -27,7 +27,7 @@ publish:
         --manifest-globs vss-extension.json \
         --auth-type pat \
         --no-prompt \
-        -t "{{ env_var('AZURE_DEVOPS_PAT') }}" \
+        -t "$azure_devops_pat" \
         -u https://marketplace.visualstudio.com
 
 release version="minor": clean (version version) install build package publish
