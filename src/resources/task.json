@@ -24,7 +24,7 @@
   ],
   "execution": {
     "Node10": {
-      "target": "lib"
+      "target": "lib/index.js"
     }
   }
 }
