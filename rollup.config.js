@@ -7,10 +7,10 @@ export default {
     dir: "dist/lib",
   },
   plugins: [
+        resolve(),
         commonjs({ include: "node_modules/**"}),
         typescript({
             module: "CommonJS"
         }),
-        resolve(),
       ]
 }
