@@ -1,7 +1,9 @@
 import * as os from "os";
 import * as taskLib from "azure-pipelines-task-lib/task";
 import * as toolLib from "azure-pipelines-tool-lib/tool";
-const axios = require("axios").default;
+import { Axios, AxiosResponse } from "axios"
+
+const axios = new Axios;
 
 async function run() {
   const osPlat = os.platform();
@@ -43,12 +45,18 @@ async function installJust(version: string, target: string) {
   toolLib.prependPath(cachePath);
 }
 
+interface GitHubApiResponse extends AxiosResponse {
+  data: {
+    tag_name: string
+  }
+}
+
 async function getLatestVersion() {
-  const res = await axios.get(
+  const res = await axios.get<GitHubApiResponse>(
     `https://api.github.com/repos/casey/just/releases/latest`
   );
 
-  return res.data.tag_name;
+  return res.data.data.tag_name;
 }
 
 run()
