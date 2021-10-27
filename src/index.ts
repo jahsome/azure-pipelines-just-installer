@@ -51,4 +51,4 @@ async function getLatestVersion() {
   return res.data.tag_name;
 }
 
-run();
+run()
