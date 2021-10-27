@@ -7,5 +7,5 @@ export default {
     dir: "dist/lib",
     format: 'cjs'
   },
-  plugins: [typescript(), nodeResolve()]
+  plugins: [nodeResolve(), typescript()]
 }
