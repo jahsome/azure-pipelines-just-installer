@@ -37,3 +37,5 @@ tag version:
 
 run:
     node dist/lib
+
+test: clean build run
