@@ -5,7 +5,7 @@ const axios = require("axios").default;
 
 async function run() {
   const osPlat = os.platform();
-  const version = taskLib.getInput("version") ?? (await getLatestVersion());
+  const version = taskLib.getInput("version") || await getLatestVersion();
 
   const targets: {
     [key: string]: string;
