@@ -9,7 +9,7 @@ clean:
 
 build:
     #!/bin/bash
-    npx tsc
+    npx esbuild --bundle --platform=node --minify --outdir=dist/lib src/index.ts
     version=$(cat package.json | jq -r '.version | split(".") | { Major: .[0], Minor: .[1], Patch: .[2]}')
     cat <<< $(jq --argjson version "$version" ' .version |= $version ' src/resources/task.json) > dist/task.json
 

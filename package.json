@@ -11,6 +11,7 @@
     "axios": "^0.23.0",
     "azure-pipelines-task-lib": "^3.1.10",
     "azure-pipelines-tool-lib": "^0.13.3",
+    "esbuild": "^0.13.9",
     "tfx-cli": "^0.9.3"
   },
   "version": "0.0.0"
