@@ -12,6 +12,7 @@
     "azure-pipelines-task-lib": "^3.1.10",
     "azure-pipelines-tool-lib": "^0.13.3",
     "esbuild": "^0.13.9",
+    "shelljs": "^0.8.4",
     "tfx-cli": "^0.9.3"
   },
   "version": "0.0.0"
