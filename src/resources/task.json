@@ -24,8 +24,7 @@
   ],
   "execution": {
     "Node10": {
-      "instanceNameFormat": "Install Just",
-      "target": "dist/index.js"
+      "target": "index.js"
     }
   }
 }

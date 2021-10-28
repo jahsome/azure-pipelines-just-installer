@@ -15,7 +15,7 @@
   ],
   "files": [
     {
-      "path": "dist"
+      "path": "./dist"
     }
   ],
   "contributions": [
