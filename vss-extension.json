@@ -15,10 +15,7 @@
   ],
   "files": [
     {
-      "path": "dist/lib"
-    },
-    {
-      "path": "dist/task.json"
+      "path": "dist"
     }
   ],
   "contributions": [
