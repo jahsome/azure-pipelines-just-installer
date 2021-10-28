@@ -9,9 +9,10 @@ clean:
 
 build:
     #!/bin/bash
-    npx parcel build src/index.ts
+    npx tsc
     version=$(cat package.json | jq -r '.version | split(".") | { Major: .[0], Minor: .[1], Patch: .[2]}')
     cat <<< $(jq --argjson version "$version" ' .version |= $version ' src/resources/task.json) > dist/task.json
+    cp -r node_modules dist
 
 version version="patch":
     #!/bin/bash
@@ -30,12 +31,12 @@ publish:
         -t {{ env_var('AZURE_DEVOPS_PAT') }} \
         -u https://marketplace.visualstudio.com
 
-release version="minor": clean (version version) install build package publish
+release version="minor": clean (version version) install build publish
 
 tag version:
     gh release create {{ version }} -R jahsome/azure-pipelines-just-installer -t {{ version }} -n ''
 
 run:
-    node dist/lib
+    node dist
 
 test: clean build run

@@ -5,7 +5,7 @@ import * as axios from "axios"
 
 async function run() {
   const osPlat = os.platform();
-  const version = taskLib.getInput("tsversion") || await getLatestVersion();
+  const version = taskLib.getInput("version") || await getLatestVersion();
 
   const targets: {
     [key: string]: string;
