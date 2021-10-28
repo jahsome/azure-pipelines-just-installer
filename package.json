@@ -15,6 +15,8 @@
     "azure-pipelines-task-lib": "^3.1.10",
     "azure-pipelines-tool-lib": "^0.13.3",
     "esbuild": "^0.13.9",
+    "os": "^0.1.2",
+    "parcel": "^2.0.0",
     "rollup": "^2.58.3",
     "rollup-plugin-dts": "^4.0.0",
     "rollup-plugin-esbuild": "^4.6.0",
@@ -24,7 +26,9 @@
     "typescript": "^4.4.4"
   },
   "version": "0.0.0",
-  "main": "dist/lib/index.js",
-  "module": "dist/lib/index.mjs",
-  "typings": "dist/lib/index.d.ts"
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "devDependencies": {
+    "@parcel/transformer-typescript-tsc": "^2.0.0"
+  }
 }

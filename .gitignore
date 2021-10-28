@@ -5,3 +5,4 @@ dist/
 .taskkey
 .env*
 !.env.example
+.parcel-cache
