@@ -44,9 +44,7 @@ async function installJust(version: string, target: string) {
 }
 
 interface GitHubApiResponse extends axios.AxiosResponse {
-  data: {
-    tag_name: string
-  }
+  tag_name: string
 }
 
 async function getLatestVersion() {
@@ -54,7 +52,7 @@ async function getLatestVersion() {
     `https://api.github.com/repos/casey/just/releases/latest`
   );
 
-  return res.data.data.tag_name;
+  return res.data.tag_name;
 }
 
 run()
